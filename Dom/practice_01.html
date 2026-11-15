@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1 id="demo">Hello World</h1>
+    </body>
+    <script>
+        const heading = document.getElementById("demo");
+        heading.innerHTML = "Hello Umer!";
+
+        document.getElementById("demo").style.color = "red";
+        // Create new element
+        const para = document.createElement("p");
+
+        // Add text
+        para.innerText = "Hello World";
+
+        // Add to webpage
+        document.body.appendChild(para);
+    </script>
+</html>

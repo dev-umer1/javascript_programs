@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Interactive Practice</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 450px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: blue;
+            margin-bottom: 15px;
+        }
+
+        #counter {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .colors {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        button {
+            border: none;
+            padding: 11px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            color: white;
+        }
+
+        .blue {
+            background: blue;
+        }
+
+        .red {
+            background: red;
+        }
+
+        .green {
+            background: green;
+        }
+
+        .purple {
+            background: purple;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .click-btn {
+            background: #2563eb;
+            flex: 1;
+        }
+
+        .reset-btn {
+            background: #64748b;
+            flex: 1;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 id="heading">Hello Umer!</h1>
+
+        <p id="counter">Button clicked: 0 times</p>
+
+        <label for="nameInput">Change heading text</label>
+
+        <input
+            type="text"
+            id="nameInput"
+            placeholder="Enter your name"
+        >
+
+        <label>Change heading color</label>
+
+        <div class="colors">
+            <button class="blue" data-color="blue">Blue</button>
+            <button class="red" data-color="red">Red</button>
+            <button class="green" data-color="green">Green</button>
+            <button class="purple" data-color="purple">Purple</button>
+        </div>
+
+        <div class="actions">
+            <button id="clickBtn" class="click-btn">Click Me</button>
+            <button id="resetBtn" class="reset-btn">Reset</button>
+        </div>
+
+    </div>
+
+    <script>
+
+        // Select HTML Elements
+        const heading = document.getElementById("heading");
+        const counter = document.getElementById("counter");
+        const nameInput = document.getElementById("nameInput");
+
+        const clickBtn = document.getElementById("clickBtn");
+        const resetBtn = document.getElementById("resetBtn");
+
+        const colorButtons = document.querySelectorAll(".colors button");
+
+        // Counter Variable
+        let count = 0;
+
+        // Change Heading Text
+        nameInput.addEventListener("input", function() {
+
+            const name = nameInput.value.trim();
+
+            heading.innerText = name
+                ? `Hello ${name}!`
+                : "Hello World!";
+
+        });
+
+        // Change Heading Color
+        colorButtons.forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                const color = button.getAttribute("data-color");
+
+                heading.style.color = color;
+
+            });
+
+        });
+
+        // Click Counter
+        clickBtn.addEventListener("click", function() {
+
+            count++;
+
+            counter.innerText = `Button clicked: ${count} times`;
+
+        });
+
+        // Reset Everything
+        resetBtn.addEventListener("click", function() {
+
+            count = 0;
+
+            heading.innerText = "Hello Umer!";
+            heading.style.color = "blue";
+
+            counter.innerText = "Button clicked: 0 times";
+
+            nameInput.value = "";
+
+        });
+
+    </script>
+
+</body>
+</html>
